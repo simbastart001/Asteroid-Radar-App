@@ -8,6 +8,7 @@
         functionality with Shoe Store App. Happy shopping!
     </string>
     <string name="shoe_detail">SHOE DETAIL</string>
+    <string name="shoe_list">SHOE LIST</string>
     <string name="goto_list">GOTO LIST</string>
     <string name="notice_text">About the App</string>
     <string name="next_button">NEXT</string>
