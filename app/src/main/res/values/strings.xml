@@ -20,6 +20,17 @@
     <string name="paswword">Password:</string>
     <string name="password_hint">Enter password</string>
     <string name="signup">SIGN UP</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="enter_new_shoe">NEW SHOE DETAIL</string>
+    <string name="logout">LOGOUT</string>
+    <string name="shoename">Shoe Name:</string>
+    <string name="company">Company:</string>
+    <string name="shoesize">Shoe Size:</string>
+    <string name="description">Description:</string>
+    <string name="enter_shoename">Enter Shoe Name</string>
+    <string name="enter_company">Enter Company</string>
+    <string name="enter_shoesize">Enter Shoe Size</string>
+    <string name="enter_description">Enter Description</string>
+    <string name="save_newshoe">SAVE SHOE</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

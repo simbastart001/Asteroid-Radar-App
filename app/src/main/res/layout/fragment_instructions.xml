@@ -9,6 +9,14 @@
             android:layout_height="match_parent"
             android:padding="16dp"
             tools:context=".ui.instructions.InstructionsFragment">
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/shoe7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/imageViewInstructions"
+                app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
                 android:id="@+id/notice_text"
@@ -18,7 +26,7 @@
                 android:fontFamily="@font/roboto_light"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewInstructions"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintBottom_toTopOf="@+id/instructions_text"/>
 
