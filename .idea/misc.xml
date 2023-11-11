@@ -3,16 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.165" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/drawable/edittext_border.xml" value="0.215" />
+        <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/drawable/ic_launcher_background.xml" value="0.165" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/divider_menu_item.xml" value="0.2" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/fragment_instructions.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/fragment_login.xml" value="0.24094202898550723" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/fragment_shoe_detail.xml" value="0.264" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/fragment_shoe_list.xml" value="0.21739130434782608" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/fragment_welcome.xml" value="0.271286231884058" />
+        <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/item_shoe.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/layout/shoe_nav_header.xml" value="0.21739130434782608" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/menu/logout.xml" value="0.28802083333333334" />
         <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/menu/navigation_menu.xml" value="0.2890625" />
+        <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1535" />
+        <entry key="..\:/Users/simar/AndroidStudioProjects/starter/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.165" />
       </map>
     </option>
   </component>

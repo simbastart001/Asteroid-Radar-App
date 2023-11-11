@@ -15,6 +15,7 @@ import androidx.navigation.ui.NavigationUI
 import com.bumptech.glide.Glide
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.databinding.ItemShoeBinding
 import com.udacity.shoestore.models.Shoe
 import timber.log.Timber
 
@@ -33,16 +34,19 @@ class ShoeListFragment : Fragment() {
             false
         )
         setHasOptionsMenu(true)
-        shoeListViewModel = ViewModelProvider(this).get(ShoeStoreViewModel::class.java)
+
+        shoeListViewModel = ViewModelProvider(requireActivity()).get(ShoeStoreViewModel::class.java)
+        shoeListViewModel.shoeListLiveData.observe(viewLifecycleOwner, Observer { shoeList ->
+            updateUI(shoeList)
+        })
 
         binding.fab.setOnClickListener {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
 
         shoeListViewModel.shoeListLiveData.observe(viewLifecycleOwner, Observer { shoeList ->
-            updateUI(shoeList)
+            Timber.i("shoeList updated: $shoeList")
         })
-
 
 
         return binding.root
@@ -53,16 +57,17 @@ class ShoeListFragment : Fragment() {
         val shoeContainer: LinearLayout = binding.shoeContainer
         shoeContainer.removeAllViews()
 
-        for (shoe in shoeListViewModel.getShoeList()) {
-            val shoeTextView = TextView(requireContext())
-            shoeTextView.text =
-                "Name: ${shoe.name}\nSize: ${shoe.size}\nCompany: ${shoe.company}\nDescription: ${shoe.description}\n\n"
-            shoeTextView.textSize = 18F
-            shoeContainer.addView(shoeTextView)
+        for (shoe in shoeList) {
+            // Inflate a layout for each shoe
+            val shoeItemBinding = ItemShoeBinding.inflate(layoutInflater, shoeContainer, false)
+            shoeItemBinding.shoe = shoe
+            shoeItemBinding.shoeListViewModel = shoeListViewModel
 
-//            TODO @SimbaStart:     load images if any
+            // Add the shoe layout to the container
+            shoeContainer.addView(shoeItemBinding.root)
+
+            // Load images if any and add them to the shoe layout
             for (imageResource in shoe.images) {
-                Timber.i("found resource ID is $imageResource")
                 val shoeImageView = ImageView(requireContext())
                 Glide.with(requireContext())
                     .load(imageResource)
@@ -71,7 +76,6 @@ class ShoeListFragment : Fragment() {
                     .into(shoeImageView)
                 shoeContainer.addView(shoeImageView)
             }
-
         }
     }
 

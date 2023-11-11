@@ -1,21 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- res/menu/your_menu.xml -->
 <menu
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:showIn="navigation_view"
->
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:showIn="navigation_view">
+
     <item
             android:id="@+id/shoeListFragment"
             android:title="@string/shoe_list"
-            android:icon="@drawable/list"/>
+            android:icon="@drawable/list"
+    />
 
     <item
             android:id="@+id/instructionsFragment"
             android:title="@string/instructions_page"
             android:icon="@drawable/share"/>
 
-    <item
-            android:id="@+id/shoeDetailFragment"
-            android:title="@string/shoe_detail"
-            android:icon="@drawable/ic_add"/>
 </menu>

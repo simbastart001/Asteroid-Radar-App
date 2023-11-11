@@ -20,13 +20,14 @@
                 app:destination="@id/shoeListFragment" app:popUpTo="@id/welcomeFragment" app:popUpToInclusive="false"/>
     </fragment>
     <fragment android:id="@+id/shoeListFragment" android:name="com.udacity.shoestore.ui.shoelist.ShoeListFragment"
-              android:label="ShoeListFragment">
+              android:label="@string/shoeList">
         <action android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
                 app:destination="@id/shoeDetailFragment"/>
         <action android:id="@+id/action_shoeListFragment_to_loginFragment" app:destination="@id/loginFragment"/>
     </fragment>
     <fragment android:id="@+id/shoeDetailFragment" android:name="com.udacity.shoestore.ui.shoedetail.ShoeDetailFragment"
               android:label="@string/shoe_detail">
-        <action android:id="@+id/action_shoeDetailFragment_to_shoeListFragment" app:destination="@id/shoeListFragment"/>
+        <action android:id="@+id/action_shoeDetailFragment_to_shoeListFragment" app:destination="@id/shoeListFragment"
+                app:popUpTo="@id/shoeListFragment" app:popUpToInclusive="true"/>
     </fragment>
 </navigation>
