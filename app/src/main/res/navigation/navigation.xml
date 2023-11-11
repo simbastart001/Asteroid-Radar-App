@@ -23,7 +23,8 @@
               android:label="@string/shoeList">
         <action android:id="@+id/action_shoeListFragment_to_shoeDetailFragment"
                 app:destination="@id/shoeDetailFragment"/>
-        <action android:id="@+id/action_shoeListFragment_to_loginFragment" app:destination="@id/loginFragment"/>
+        <action android:id="@+id/action_shoeListFragment_to_loginFragment" app:destination="@id/loginFragment"
+                app:popUpTo="@id/loginFragment" app:popUpToInclusive="false"/>
     </fragment>
     <fragment android:id="@+id/shoeDetailFragment" android:name="com.udacity.shoestore.ui.shoedetail.ShoeDetailFragment"
               android:label="@string/shoe_detail">
