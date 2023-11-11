@@ -22,14 +22,15 @@
                 android:textSize="24sp"
                 android:textColor="#000"
                 android:fontFamily="@font/roboto"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintTop_toBottomOf="@+id/imageView"
+                android:layout_marginTop="8dp"/>
         <TextView
                 android:text="@string/shoename"
-                android:layout_width="395dp"
+                android:layout_width="0dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="#000"
                 android:layout_height="wrap_content"
@@ -42,7 +43,7 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"/>
         <EditText
-                android:layout_width="395dp"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:padding="4dp"
                 android:background="@drawable/edittext_border"
@@ -57,7 +58,7 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
         <TextView
                 android:text="@string/enter_company"
-                android:layout_width="395dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:id="@+id/entrcompany_text"
@@ -68,7 +69,7 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"/>
         <EditText
-                android:layout_width="395dp"
+                android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:padding="4dp"
                 android:background="@drawable/edittext_border"
@@ -147,10 +148,19 @@
                 android:theme="@style/SuccessButton"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginBottom="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@+id/cancel_button"
+                app:layout_constraintHorizontal_bias="0.5"/>
+        <Button
+                android:text="@string/cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/cancel_button"
+                android:theme="@style/CancelButton"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                android:layout_marginBottom="16dp" app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toStartOf="@+id/save_newshoe_button"
+                app:layout_constraintHorizontal_chainStyle="spread_inside"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

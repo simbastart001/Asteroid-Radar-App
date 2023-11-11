@@ -7,7 +7,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
             tools:context=".ui.instructions.InstructionsFragment">
         <ImageView
                 android:layout_width="0dp"
@@ -28,7 +27,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageViewInstructions"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintBottom_toTopOf="@+id/instructions_text"/>
+                app:layout_constraintBottom_toTopOf="@+id/instructions_text" android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
 
         <TextView
                 android:id="@+id/instructions_text"
@@ -42,7 +42,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/notice_text"
-        />
+                android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
 
         <Button
                 android:text="@string/goto_list"

@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">ShoeStore</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="instructions">Welcome to Shoe Store App – where every step leads to style and comfort! Step into a
+    <string name="instructions">The Shoe Store App – where every step leads to style and comfort! Step into a
         world of endless possibilities for your feet. Explore our curated collection of trendy and timeless footwear
         designed to elevate your every stride. Whether you are a sneaker enthusiast, a high-heel aficionado, or someone
         in search of the perfect pair, we have got something just for you. Get ready to walk the path of fashion and
         functionality with Shoe Store App. Happy shopping!
     </string>
-    <string name="shoe_detail">SHOE DETAIL</string>
+    <string name="shoe_detail">SHOE DETAILS</string>
     <string name="shoe_list">SHOE LIST</string>
     <string name="goto_list">GOTO LIST</string>
     <string name="notice_text">About the App</string>
@@ -31,6 +31,10 @@
     <string name="enter_shoesize">Enter Shoe Size</string>
     <string name="enter_description">Enter Description</string>
     <string name="save_newshoe">SAVE SHOE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="welcome">WELCOME</string>
+    <string name="instructions_page">INSTRUCTIONS</string>
+    <string name="shoeList">SHOE LIST</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

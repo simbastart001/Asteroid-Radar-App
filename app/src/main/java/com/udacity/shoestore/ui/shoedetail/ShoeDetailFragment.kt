@@ -27,6 +27,10 @@ class ShoeDetailFragment : Fragment() {
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }
 
+        binding.cancelButton.setOnClickListener {
+            findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
+        }
+
 
 
         return binding.root

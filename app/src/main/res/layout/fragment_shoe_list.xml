@@ -21,26 +21,10 @@
                 android:layout_weight="1">
 
             <LinearLayout
+                    android:id="@+id/shoeContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                <!-- Dummy Text -->
-                <TextView
-                        android:id="@+id/dummy_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/app_name"
-                        android:fontFamily="@font/roboto"
-                        android:textSize="32sp"
-                        android:gravity="center"
-                        android:textColor="#000"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"/>
-
-                <!-- Add your code for displaying Shoe items here, potentially using a RecyclerView -->
-
-            </LinearLayout>
+                    android:orientation="vertical"/>
 
         </ScrollView>
 

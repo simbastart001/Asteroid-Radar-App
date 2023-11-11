@@ -10,7 +10,12 @@
             android:icon="@drawable/list"/>
 
     <item
+            android:id="@+id/instructionsFragment"
+            android:title="@string/instructions_page"
+            android:icon="@drawable/share"/>
+
+    <item
             android:id="@+id/shoeDetailFragment"
             android:title="@string/shoe_detail"
-            android:icon="@drawable/list"/>
+            android:icon="@drawable/ic_add"/>
 </menu>
