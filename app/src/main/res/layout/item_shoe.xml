@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="School Shoe"
-                android:text="@{shoe.name}"
+                android:text="@={shoe.name}"
         />
 
         <!-- Example of binding company LiveData -->
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Bata"
-                android:text="@{shoe.company}"
+                android:text="@={shoe.company}"
         />
 
         <!-- Example of binding shoeSize LiveData -->
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Very comfortable"
-                android:text="@{shoe.description}"
+                android:text="@={shoe.description}"
         />
 
 

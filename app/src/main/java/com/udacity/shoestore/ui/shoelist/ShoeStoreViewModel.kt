@@ -13,6 +13,9 @@ class ShoeStoreViewModel : ViewModel() {
     val shoeListLiveData: LiveData<List<Shoe>>
         get() = _shoeListLiveData
 
+    private var _eventNewShoeSaved = MutableLiveData<Boolean>()
+    val eventNewShoeSaved: LiveData<Boolean> get() = _eventNewShoeSaved
+
     private var _shoename = MutableLiveData<String>()
     val shoeName: LiveData<String> get() = _shoename
 
@@ -51,6 +54,32 @@ class ShoeStoreViewModel : ViewModel() {
         _selectedShoe.value = newShoe
     }
 
+    fun saveNewShoe() {
+        _eventNewShoeSaved.value = false
+        _eventNewShoeSaved.value = true
+        Timber.i("***** _eventNewShoeSaved _eventNewShoeSavedis $_eventNewShoeSaved")
+        addNewShoe(
+            shoeName.value!!,
+            shoeSize.value ?: 0.0,
+            company.value!!,
+            description.value!!,
+            listOf(R.drawable.shoe1) // TODO @SimbaStart:       placeholder image for newShoe
+        )
+//        TODO @SimbaStart:     check if new shoe added is logging
+        val newShoe: Shoe = Shoe(
+            shoeName.value!!,
+            shoeSize.value ?: 0.0,
+            company.value!!,
+            description.value!!,
+            listOf(R.drawable.shoe1)
+        )
+        Timber.i("newShoe added is $newShoe")
+    }
+
+    fun newShoeSavedComplete() {
+        _eventNewShoeSaved.value = false
+    }
+
 
     fun defaultList() {
         addShoe(
@@ -69,12 +98,8 @@ class ShoeStoreViewModel : ViewModel() {
         )
     }
 
-    // Function to get the list of shoes
-    fun getShoeList(): List<Shoe> {
-        return _shoeListLiveData.value!!
-    }
-
     init {
+        _eventNewShoeSaved.value = false
         defaultList()
     }
 }

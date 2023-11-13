@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--    TODO @SimbStart:    For activity.main, I chose 'LinearLayout' for the reason that it is a very easy and simple
+           structure to implement. Adjusts so well on both orientations (Potrait/Landscape). Actually it made it easier
+           designing to include different views like 'the AppBarLayout', 'Toolbar', 'my fragment host' etc.     -->
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 

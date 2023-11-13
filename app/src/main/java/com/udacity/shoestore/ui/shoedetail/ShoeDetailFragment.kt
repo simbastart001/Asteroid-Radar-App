@@ -32,12 +32,16 @@ class ShoeDetailFragment : Fragment() {
             false
         )
         shoeListViewModel = ViewModelProvider(requireActivity()).get(ShoeStoreViewModel::class.java)
+        binding.lifecycleOwner = requireActivity();
 
-        binding.saveNewshoeButton.setOnClickListener {
-            Toast.makeText(requireContext(), "New shoe saved!", Toast.LENGTH_SHORT).show()
-            saveNewShoe()
-            findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
-        }
+        shoeListViewModel.eventNewShoeSaved.observe(requireActivity(), Observer { isSaved ->
+            Timber.i("eventNewShoeSaved value is $isSaved")
+            if (isSaved) {
+                saveComplete()
+//                TODO @SimbaStart:     prevent memory leaks by setting the boolean to false again
+                shoeListViewModel.newShoeSavedComplete()
+            }
+        })
 
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
@@ -46,17 +50,8 @@ class ShoeDetailFragment : Fragment() {
         return binding.root
     }
 
-    private fun saveNewShoe() {
-        val shoeName = binding.enterShoenameEdtxt.text.toString()
-        val shoeSize = binding.enterShoesizeEdtxt.text.toString().toDoubleOrNull()
-        val company = binding.enterCompanyEdtxt.text.toString()
-        val description = binding.enterDescriptionEdtxt.text.toString()
-        shoeListViewModel.addNewShoe(shoeName, shoeSize ?: 0.0, company, description, listOf(R.drawable.shoe1))
-        val newShoe: Shoe = Shoe(shoeName, shoeSize!!, company, description, listOf(R.drawable.shoe1))
-
-        Timber.i("newShoe added is $newShoe")
-
-        // Instead of updating ViewModel properties directly, you can set the shoe directly
-//        shoeListViewModel.setSelectedShoe(newShoe)
+    fun saveComplete() {
+        Toast.makeText(requireContext(), "New shoe saved!", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
     }
 }

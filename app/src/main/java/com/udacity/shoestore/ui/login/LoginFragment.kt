@@ -43,7 +43,6 @@ class LoginFragment : Fragment() {
                 // Show an error message or handle invalid input
                 Toast.makeText(requireContext(), "Invalid email or password", Toast.LENGTH_SHORT).show()
             }
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToWelcomeFragment())
         }
 
         return binding.root

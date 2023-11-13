@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--    TODO @SimbStart:    For fragment_shoe_list, to avoid complex structure when design screens that includes lists of data,
+           sI prefer to use LinearLayout for designing. This not only helps on the flexibility but as well saves me much time to design,
+           whilst focusing more on the logic. Again,tested on both orientations (Potrait/Landscape).    -->
+
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:bind="http://schemas.android.com/apk/res-auto"
->
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
@@ -23,7 +26,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1">
-
 
             <LinearLayout
                     android:id="@+id/shoeContainer"
