@@ -41,10 +41,10 @@ class ShoeDetailFragment : Fragment() {
         binding.lifecycleOwner = requireActivity();
 
 
-        shoeListViewModel.eventNewShoeSaved.observe(requireActivity(), Observer { isSaved ->
+        shoeListViewModel.eventNewShoeSaved.observe(viewLifecycleOwner, Observer { isSaved ->
             Timber.i("eventNewShoeSaved value is $isSaved")
             if (isSaved) {
-                saveComplete()
+                findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
 //                TODO @SimbaStart:     prevent memory leaks by setting the boolean to false again
                 shoeListViewModel.newShoeSavedComplete()
             }
@@ -54,16 +54,10 @@ class ShoeDetailFragment : Fragment() {
             Timber.i("shoeList shoeList is $shoeList")
         })
 
-
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
         }
 
         return binding.root
-    }
-
-    fun saveComplete() {
-        Toast.makeText(requireContext(), "New shoe saved!", Toast.LENGTH_SHORT).show()
-        findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
     }
 }

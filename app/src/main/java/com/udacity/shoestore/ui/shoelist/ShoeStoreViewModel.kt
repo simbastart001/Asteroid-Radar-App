@@ -13,22 +13,22 @@ class ShoeStoreViewModel : ViewModel() {
     val shoeListLiveData: LiveData<List<Shoe>>
         get() = _shoeListLiveData
 
-    private var _eventNewShoeSaved = MutableLiveData<Boolean>()
-    val eventNewShoeSaved: LiveData<Boolean> get() = _eventNewShoeSaved
+    var eventNewShoeSaved = MutableLiveData<Boolean>()
+//    val eventNewShoeSaved: LiveData<Boolean> get() = _eventNewShoeSaved
 
-    private var _shoename = MutableLiveData<String>()
-    val shoeName: LiveData<String> get() = _shoename
+    var shoename = MutableLiveData<String>()
+//    val shoeName: LiveData<String> get() = _shoename
 
-    private var _company = MutableLiveData<String>()
-    val company: LiveData<String> get() = _company
+    var shoecompany = MutableLiveData<String>()
+//    val company: LiveData<String> get() = _company
 
+    var shoesize = MutableLiveData<Double>()
 
-    private var _shoesize = MutableLiveData<Double>()
-    val shoeSize: LiveData<Double> get() = _shoesize
+//    val shoeSize: LiveData<Double> get() = _shoesize
 
-    private var _description = MutableLiveData<String>()
+    var shoedescription = MutableLiveData<String>()
 
-    val description: LiveData<String> get() = _description
+//    val description: LiveData<String> get() = _description
 
     private var _image: MutableList<Int> = mutableListOf()
     private val _imageLiveData = MutableLiveData<List<Int>>()
@@ -42,10 +42,10 @@ class ShoeStoreViewModel : ViewModel() {
         val newShoe = Shoe(name, size, company, description, images)
         _shoeList.add(newShoe)
         _shoeListLiveData.value = _shoeList.toList()
-        _shoename.value = name
-        _company.value = company
-        _shoesize.value = size
-        _description.value = description
+        shoename.value = name
+        shoecompany.value = company
+        shoesize.value = size
+        shoedescription.value = description
     }
 
     fun addNewShoe(name: String, size: Double, company: String, description: String, images: List<Int>) {
@@ -57,30 +57,29 @@ class ShoeStoreViewModel : ViewModel() {
 
     fun saveNewShoe() {
         addNewShoe(
-            _shoename.value!!,
-            _shoesize.value ?: 0.0,
-            _company.value!!,
-            _description.value!!,
+            shoename.value!!,
+            shoesize.value ?: 0.0,
+            shoecompany.value!!,
+            shoedescription.value!!,
             listOf(R.drawable.shoe1) // TODO @SimbaStart:       placeholder image for newShoe
         )
 //        TODO @SimbaStart:     check if new shoe added is logging
         val newShoe: Shoe = Shoe(
-            _shoename.value!!,
-            _shoesize.value ?: 0.0,
-            _company.value!!,
-            _company.value!!,
+            shoename.value!!,
+            shoesize.value ?: 0.0,
+            shoecompany.value!!,
+            shoedescription.value!!,
             listOf(R.drawable.shoe1)
         )
         Timber.i("newShoe added is $newShoe")
 
-        _eventNewShoeSaved.value = true
-        Timber.i("***** _eventNewShoeSaved _eventNewShoeSaved is $_eventNewShoeSaved")
+        eventNewShoeSaved.value = true
+        Timber.i("***** _eventNewShoeSaved _eventNewShoeSaved is $eventNewShoeSaved")
     }
 
     fun newShoeSavedComplete() {
-        _eventNewShoeSaved.value = false
+        eventNewShoeSaved.value = false
     }
-
 
     fun defaultList() {
         addShoe(
