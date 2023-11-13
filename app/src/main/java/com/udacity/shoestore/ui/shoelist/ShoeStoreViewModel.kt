@@ -27,6 +27,7 @@ class ShoeStoreViewModel : ViewModel() {
     val shoeSize: LiveData<Double> get() = _shoesize
 
     private var _description = MutableLiveData<String>()
+
     val description: LiveData<String> get() = _description
 
     private var _image: MutableList<Int> = mutableListOf()
@@ -50,30 +51,30 @@ class ShoeStoreViewModel : ViewModel() {
     fun addNewShoe(name: String, size: Double, company: String, description: String, images: List<Int>) {
         val newShoe = Shoe(name, size, company, description, images)
         _shoeList.add(newShoe)
-        _shoeListLiveData.value = _shoeList.toList()
+        _shoeListLiveData.value = _shoeList
         _selectedShoe.value = newShoe
     }
 
     fun saveNewShoe() {
-        _eventNewShoeSaved.value = false
-        _eventNewShoeSaved.value = true
-        Timber.i("***** _eventNewShoeSaved _eventNewShoeSavedis $_eventNewShoeSaved")
         addNewShoe(
-            shoeName.value!!,
-            shoeSize.value ?: 0.0,
-            company.value!!,
-            description.value!!,
+            _shoename.value!!,
+            _shoesize.value ?: 0.0,
+            _company.value!!,
+            _description.value!!,
             listOf(R.drawable.shoe1) // TODO @SimbaStart:       placeholder image for newShoe
         )
 //        TODO @SimbaStart:     check if new shoe added is logging
         val newShoe: Shoe = Shoe(
-            shoeName.value!!,
-            shoeSize.value ?: 0.0,
-            company.value!!,
-            description.value!!,
+            _shoename.value!!,
+            _shoesize.value ?: 0.0,
+            _company.value!!,
+            _company.value!!,
             listOf(R.drawable.shoe1)
         )
         Timber.i("newShoe added is $newShoe")
+
+        _eventNewShoeSaved.value = true
+        Timber.i("***** _eventNewShoeSaved _eventNewShoeSaved is $_eventNewShoeSaved")
     }
 
     fun newShoeSavedComplete() {
@@ -99,7 +100,6 @@ class ShoeStoreViewModel : ViewModel() {
     }
 
     init {
-        _eventNewShoeSaved.value = false
         defaultList()
     }
 }

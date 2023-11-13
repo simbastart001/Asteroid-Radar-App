@@ -32,7 +32,14 @@ class ShoeDetailFragment : Fragment() {
             false
         )
         shoeListViewModel = ViewModelProvider(requireActivity()).get(ShoeStoreViewModel::class.java)
+        /*                TODO @SimbaStart:     the following line is very key when implementing two way data binding.
+                                                You must call the "viewModel" variable defined in xml and initiate it
+                                                 to the viewModel decalred in your UI controller
+
+        */
+        binding.shoeListViewModel = shoeListViewModel
         binding.lifecycleOwner = requireActivity();
+
 
         shoeListViewModel.eventNewShoeSaved.observe(requireActivity(), Observer { isSaved ->
             Timber.i("eventNewShoeSaved value is $isSaved")
@@ -42,6 +49,11 @@ class ShoeDetailFragment : Fragment() {
                 shoeListViewModel.newShoeSavedComplete()
             }
         })
+
+        shoeListViewModel.shoeListLiveData.observe(viewLifecycleOwner, Observer { shoeList ->
+            Timber.i("shoeList shoeList is $shoeList")
+        })
+
 
         binding.cancelButton.setOnClickListener {
             findNavController().navigate(ShoeDetailFragmentDirections.actionShoeDetailFragmentToShoeListFragment())
