@@ -17,18 +17,17 @@ class ShoeStoreViewModel : ViewModel() {
 //    val eventNewShoeSaved: LiveData<Boolean> get() = _eventNewShoeSaved
 
     var shoename = MutableLiveData<String>()
-//    val shoeName: LiveData<String> get() = _shoename
+    val shoeName: LiveData<String> get() = shoename
 
+    //
     var shoecompany = MutableLiveData<String>()
-//    val company: LiveData<String> get() = _company
+    val shoeCompany: LiveData<String> get() = shoecompany
 
     var shoesize = MutableLiveData<Double>()
-
-//    val shoeSize: LiveData<Double> get() = _shoesize
+    val shoeSize: LiveData<Double> get() = shoesize
 
     var shoedescription = MutableLiveData<String>()
-
-//    val description: LiveData<String> get() = _description
+    val shoeDescription: LiveData<String> get() = shoedescription
 
     private var _image: MutableList<Int> = mutableListOf()
     private val _imageLiveData = MutableLiveData<List<Int>>()
@@ -87,14 +86,14 @@ class ShoeStoreViewModel : ViewModel() {
             9.5,
             "Nike",
             "Comfortable sports shoe",
-            listOf(R.drawable.shoe, R.drawable.shoe2)
+            listOf(R.drawable.shoe2)
         )
         addShoe(
             "Casual Shoe",
             8.0,
             "Adidas",
             "Stylish casual shoe",
-            listOf(R.drawable.shoe5, R.drawable.shoe8)
+            listOf(R.drawable.shoe8)
         )
     }
 
