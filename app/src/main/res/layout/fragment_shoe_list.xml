@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <!--    TODO @SimbStart:    For fragment_shoe_list, to avoid complex structure when design screens that includes lists of data,
-           sI prefer to use LinearLayout for designing. This not only helps on the flexibility but as well saves me much time to design,
+           I prefer to use LinearLayout for designing. This not only helps on the flexibility but as well saves me much time to design,
            whilst focusing more on the logic. Again,tested on both orientations (Potrait/Landscape).    -->
 
 <layout

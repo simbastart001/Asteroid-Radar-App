@@ -1,4 +1,6 @@
-<!-- res/layout/item_shoe.xml -->
+<!--    TODO @SimbStart:    For this layout, I have LinearLayout to pick out changes in views from new Shoes updated
+            I wasn't confident of using ConstraintLayout, since I was updating rhe views progamatically
+            Again, the design works perfectly well in both (Potrait/Landscape) orientations.    -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">

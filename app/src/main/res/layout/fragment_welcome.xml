@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--    TODO @SimbaStart:    Since there are no much views on this screen, I decided to use  ConstraintLayout.
+                It displays well even in landscape orientation    -->
 <layout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
