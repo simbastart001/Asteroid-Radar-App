@@ -7,33 +7,5 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
-    <!-- Button Styles -->
-    <style name="SuccessButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">@color/ok_green_color</item>
-        <item name="colorControlHighlight">@color/selected_green_color</item>
-        <item name="android:textColor">@color/white_text_color</item>
-        <item name="colorAccent">@color/selected_green_color</item>
-    </style>
-
-    <style name="CancelButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="colorButtonNormal">@color/colorAccent</item>
-        <item name="colorControlHighlight">@color/selected_red_color</item>
-        <item name="android:textColor">@color/white_text_color</item>
-        <item name="colorAccent">@color/selected_red_color</item>
-    </style>
-
-    <style name="TryAgainButton" parent="Widget.AppCompat.Button.Colored">
-        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless.Colored</item>
-        <item name="android:textColor">@color/grey_button_color</item>
-        <item name="colorControlHighlight">@color/skip_red_color</item>
-    </style>
 
 </resources>
