@@ -1,0 +1,109 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="asteroid"
+            type="com.udacity.asteroidradar.data.domain.Asteroid" />
+
+        <variable
+            name="videoCallback"
+            type="com.udacity.asteroidradar.adapters.AsteroidClick" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/left_well"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="8dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/right_well"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="8dp" />
+
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/left_well"
+                app:layout_constraintTop_toBottomOf="@+id/video_thumbnail"
+                tools:text="Asteroid Name" />
+
+            <ImageView
+                android:id="@+id/play_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:contentDescription="@string/asteroid_status"
+                app:layout_constraintEnd_toStartOf="@+id/right_well"
+                app:layout_constraintTop_toBottomOf="@+id/video_thumbnail"
+                app:srcCompat="@drawable/ic_status_normal" />
+
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/right_well"
+                app:layout_constraintStart_toStartOf="@+id/left_well"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                tools:text="this is asteroid description" />
+
+            <ImageView
+                android:id="@+id/video_thumbnail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="false"
+                android:contentDescription="@string/asteroid_picture"
+                android:cropToPadding="false"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="h,4:3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/asteroid_safe" />
+
+            <View
+                android:id="@+id/clickableOverlay"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>
