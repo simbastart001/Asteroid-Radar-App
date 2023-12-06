@@ -9,16 +9,16 @@ import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val database = getDatabase(application)
-    private val videosRepository = AsteroidRepository(database)
+    private val asteroidRepository = AsteroidRepository(database)
 
     /**
      * init{} is called immediately when this ViewModel is created.
      */
     init {
         viewModelScope.launch {
-            videosRepository.refreshAsteroids()
+            asteroidRepository.refreshAsteroids()
         }
     }
 
-    val playlist = videosRepository.asteroids
+    val playlist = asteroidRepository.asteroids
 }

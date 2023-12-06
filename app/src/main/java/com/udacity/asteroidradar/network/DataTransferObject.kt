@@ -7,6 +7,7 @@ import com.udacity.asteroidradar.data.entities.DbAsteroid
 @JsonClass(generateAdapter = true)
 data class NetworkAsteroidsContainer(val asteroidList: List<NetworkAsteroids>)
 
+//TODO @SimbaStart:      Convert Network results to database objects
 fun NetworkAsteroidsContainer.asDomainModel(): List<Asteroid> {
     return asteroidList.map {
         Asteroid(
@@ -36,4 +37,3 @@ fun NetworkAsteroidsContainer.asDatabaseModel(): Array<DbAsteroid> {
         )
     }.toTypedArray()
 }
-

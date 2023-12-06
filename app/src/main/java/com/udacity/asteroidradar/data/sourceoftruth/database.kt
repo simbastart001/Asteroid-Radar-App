@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.udacity.asteroidradar.data.dao.AsteroidsDao
+import com.udacity.asteroidradar.data.domain.Asteroid
 import com.udacity.asteroidradar.data.entities.DbAsteroid
 
 @Database(entities = [DbAsteroid::class], version = 1)
