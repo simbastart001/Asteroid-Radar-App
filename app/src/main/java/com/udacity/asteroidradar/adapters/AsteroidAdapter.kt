@@ -2,57 +2,48 @@ package com.udacity.asteroidradar.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
-import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.data.domain.Asteroid
 import com.udacity.asteroidradar.databinding.AsteroidItemBinding
 
-class AsteroidAdapter(val callback: AsteroidClick) : RecyclerView.Adapter<AsteroidViewHolder>() {
-
-    /**
-     * The videos that our Adapter will show
-     */
-    var asteroids: List<Asteroid> = emptyList()
-        set(value) {
-            field = value
+class AsteroidAdapter(val onClickListener: OnClickListener) :
+    ListAdapter<Asteroid, AsteroidAdapter.AsteroidViewHolder>(DiffCallback) {
+    companion object DiffCallback : DiffUtil.ItemCallback<Asteroid>() {
+        override fun areItemsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
+            return oldItem === newItem
         }
 
-
-    /**
-     * Called when RecyclerView needs a new {@link ViewHolder} of the given type to represent
-     * an item.
-     */
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AsteroidViewHolder {
-        val withDataBinding: AsteroidItemBinding = DataBindingUtil.inflate(
-            LayoutInflater.from(parent.context), AsteroidViewHolder.LAYOUT, parent, false
-        )
-        return AsteroidViewHolder(withDataBinding)
-    }
-
-    override fun getItemCount() = asteroids.size
-
-    override fun onBindViewHolder(holder: AsteroidViewHolder, position: Int) {
-        holder.viewDataBinding.also {
-            it.asteroid = asteroids[position]
-            it.videoCallback = callback
+        override fun areContentsTheSame(oldItem: Asteroid, newItem: Asteroid): Boolean {
+            return oldItem.id == newItem.id
         }
     }
 
-}
-
-/**
- * ViewHolder for DevByte items. All work is done by data binding.
- */
-class AsteroidViewHolder(val viewDataBinding: AsteroidItemBinding) :
-    RecyclerView.ViewHolder(viewDataBinding.root) {
-    companion object {
-        @LayoutRes
-        val LAYOUT = R.layout.asteroid_item
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): AsteroidAdapter.AsteroidViewHolder {
+        return AsteroidViewHolder(AsteroidItemBinding.inflate(LayoutInflater.from(parent.context)))
     }
-}
 
-class AsteroidClick(val block: (Asteroid) -> Unit) {
-    fun onClick(asteroid: Asteroid) = block(asteroid)
+    class AsteroidViewHolder(private val binding: AsteroidItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(asteroid: Asteroid) {
+            binding.asteroid = asteroid
+            binding.executePendingBindings()
+        }
+    }
+
+    override fun onBindViewHolder(holder: AsteroidAdapter.AsteroidViewHolder, position: Int) {
+        val asteroidProperty = getItem(position)
+        holder.bind(asteroidProperty)
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(asteroidProperty)
+        }
+    }
+
+    class OnClickListener(val clickListener: (asteroid: Asteroid) -> Unit) {
+        fun onClick(asteroid: Asteroid) = clickListener(asteroid)
+    }
 }

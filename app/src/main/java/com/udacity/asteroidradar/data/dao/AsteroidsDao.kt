@@ -15,4 +15,5 @@ interface AsteroidsDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg asteroid: DbAsteroid)
+
 }

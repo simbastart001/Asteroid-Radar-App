@@ -9,8 +9,9 @@
             type="com.udacity.asteroidradar.data.domain.Asteroid" />
 
         <variable
-            name="videoCallback"
-            type="com.udacity.asteroidradar.adapters.AsteroidClick" />
+            name="viewModel"
+            type="com.udacity.asteroidradar.screens.main.MainViewModel" />
+
 
     </data>
 
@@ -43,7 +44,7 @@
 
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/diameter"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -51,23 +52,39 @@
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
                 android:textStyle="bold"
+                app:astronomicalUnitText="@{asteroid.estimatedDiameter}"
                 app:layout_constraintStart_toStartOf="@+id/left_well"
-                app:layout_constraintTop_toBottomOf="@+id/video_thumbnail"
-                tools:text="Asteroid Name" />
+                app:layout_constraintTop_toBottomOf="@+id/asteroid_img"
+                tools:text="1.73434au" />
 
             <ImageView
-                android:id="@+id/play_icon"
+                android:id="@+id/is_harzadous_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
                 android:contentDescription="@string/asteroid_status"
                 app:layout_constraintEnd_toStartOf="@+id/right_well"
-                app:layout_constraintTop_toBottomOf="@+id/video_thumbnail"
-                app:srcCompat="@drawable/ic_status_normal" />
-
+                app:layout_constraintTop_toBottomOf="@+id/asteroid_img"
+                app:srcCompat="@drawable/ic_status_normal"
+                app:statusIcon="@{asteroid.isPotentiallyHazardous}" />
 
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/distanceFrmEarth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                app:kmUnitText="@{asteroid.distanceFromEarth}"
+                app:layout_constraintEnd_toEndOf="@+id/right_well"
+                app:layout_constraintStart_toStartOf="@+id/left_well"
+                app:layout_constraintTop_toBottomOf="@+id/diameter"
+                tools:text="0.324223" />
+
+            <TextView
+                android:id="@+id/velocity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -78,17 +95,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/right_well"
                 app:layout_constraintStart_toStartOf="@+id/left_well"
-                app:layout_constraintTop_toBottomOf="@+id/title"
-                tools:text="this is asteroid description" />
+                app:layout_constraintTop_toBottomOf="@+id/distanceFrmEarth"
+                app:velocityText="@{asteroid.relativeVelocity}"
+                tools:text="0.234424v" />
 
             <ImageView
-                android:id="@+id/video_thumbnail"
+                android:id="@+id/asteroid_img"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:adjustViewBounds="false"
                 android:contentDescription="@string/asteroid_picture"
                 android:cropToPadding="false"
                 android:scaleType="centerCrop"
+                app:asteroidStatusImage="@{asteroid.isPotentiallyHazardous}"
                 app:layout_constraintDimensionRatio="h,4:3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
