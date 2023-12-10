@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.udacity.asteroidradar.api.Network.asteroids
 import com.udacity.asteroidradar.data.domain.Asteroid
+import com.udacity.asteroidradar.data.domain.PictureOfDay
 import com.udacity.asteroidradar.data.entities.DbAsteroid
 import com.udacity.asteroidradar.data.entities.asDomainModel
 import com.udacity.asteroidradar.data.repository.AsteroidRepository
@@ -23,12 +24,16 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val database = getDatabase(application)
     private val asteroidRepository = AsteroidRepository(database)
 
-
     private val _navigateToSelectedProperty = MutableLiveData<Asteroid>()
     val navigateToSelectedProperty: LiveData<Asteroid>
         get() = _navigateToSelectedProperty
 
     private val _entityAsteroids = MutableLiveData<List<DbAsteroid>>()
+
+    private val _imagePproperty = MutableLiveData<PictureOfDay>()
+
+    val imagePproperty: MutableLiveData<PictureOfDay>
+        get() = _imagePproperty
 
     private val _properties = MutableLiveData<List<Asteroid>>()
 
@@ -36,38 +41,26 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         get() = _properties
 
     init {
+
+        viewModelScope.launch {
+            try {
+                val pictureOfDay = asteroidRepository.getImage()
+                _imagePproperty.value = pictureOfDay
+            } catch (e: Exception) {
+                Log.e(TAG, "Error fetching image property: ${e.message}")
+            }
+        }
+
         viewModelScope.launch {
             database.asteroidsDao.getAllAsteroids().observeForever { dbAsteroids ->
                 _entityAsteroids.value = dbAsteroids
-                // Update _properties here if needed
                 _properties.value = dbAsteroids?.asDomainModel()
             }
         }
 
         viewModelScope.launch {
-            // Fetch data from the repository and update _properties
             asteroidRepository.refreshAsteroids()
         }
-    }
-
-    // ... (other functions)
-
-    // Function to check if properties has the same information as _entityAsteroids
-    fun checkIfPropertiesMatchEntityAsteroids(): Boolean {
-        val propertiesList = _properties.value
-        val entityAsteroidsList = _entityAsteroids.value
-
-        // Check if both lists are not null
-        if (propertiesList != null && entityAsteroidsList != null) {
-            // Convert entityAsteroidsList to List<Asteroid>
-            val entityAsteroidsAsAsteroids = entityAsteroidsList.asDomainModel()
-
-            // Compare the two lists
-            return propertiesList == entityAsteroidsAsAsteroids
-        }
-
-        // Handle the case where one or both lists are null
-        return false
     }
 
     fun displayPropertyDetails(asteroid: Asteroid) {

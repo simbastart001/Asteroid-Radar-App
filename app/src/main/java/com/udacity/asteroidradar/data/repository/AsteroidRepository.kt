@@ -4,8 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.udacity.asteroidradar.api.Network
+import com.udacity.asteroidradar.api.Network.asteroids
 import com.udacity.asteroidradar.api.parseAllAsteroidsJsonResult
 import com.udacity.asteroidradar.data.domain.Asteroid
+import com.udacity.asteroidradar.data.domain.PictureOfDay
 import com.udacity.asteroidradar.data.entities.asDomainModel
 import com.udacity.asteroidradar.data.sourceoftruth.AsteroidsDatabase
 import com.udacity.asteroidradar.network.asDatabaseModel
@@ -17,15 +19,17 @@ import org.json.JSONObject
 private const val TAG = "AsteroidDebug"
 
 class AsteroidRepository(private val database: AsteroidsDatabase) {
-    val asteroids: LiveData<List<Asteroid>> = database.asteroidsDao.getAllAsteroids().map {
-        it.asDomainModel()
-    }
 
+    suspend fun getImage(): PictureOfDay {
+        return withContext(Dispatchers.IO) {
+            asteroids.imageOfTheDay(API_KEY)
+        }
+    }
 
     suspend fun refreshAsteroids() {
         withContext(Dispatchers.IO) {
             try {
-                val response = Network.asteroids.getAsteroids(
+                val response = asteroids.getAsteroids(
                     startDate = "2022-08-17", endDate = "2022-08-18", apiKey = API_KEY
                 )
 

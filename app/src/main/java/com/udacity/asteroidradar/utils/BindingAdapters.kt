@@ -2,8 +2,11 @@ package com.udacity.asteroidradar.utils
 
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.adapters.AsteroidAdapter
 import com.udacity.asteroidradar.data.domain.Asteroid
@@ -12,6 +15,21 @@ import com.udacity.asteroidradar.data.domain.Asteroid
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Asteroid>?) {
     val adapter = recyclerView.adapter as? AsteroidAdapter
     adapter?.submitList(data)
+}
+
+@BindingAdapter("imageUrl")
+fun bindImage(imgView: ImageView, imgUrl: String?) {
+    imgUrl?.let {
+        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+        Glide.with(imgView.context)
+            .load(imgUri)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.drawable.placeholder_picture_of_day)
+                    .error(R.drawable.ic_broken_image)
+            )
+            .into(imgView)
+    }
 }
 
 @BindingAdapter("statusIcon")

@@ -4,7 +4,9 @@ import com.google.gson.JsonObject
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.udacity.asteroidradar.data.domain.PictureOfDay
 import com.udacity.asteroidradar.network.NetworkAsteroidsContainer
+import com.udacity.asteroidradar.utils.Constants.API_KEY
 import com.udacity.asteroidradar.utils.Constants.BASE_URL
 import kotlinx.coroutines.Deferred
 import org.json.JSONObject
@@ -17,6 +19,12 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiService {
+
+    @GET("planetary/apod")
+    suspend fun imageOfTheDay(
+        @Query("api_key") apiKey: String
+    ): PictureOfDay
+
     @GET("neo/rest/v1/feed")
     fun getAllAsteroids(
         @Query("api_key") apiKey: String
