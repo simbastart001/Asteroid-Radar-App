@@ -30,15 +30,16 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        binding.asteroidRecycler.adapter = AsteroidAdapter(AsteroidAdapter.OnClickListener {
-            viewModel.displayPropertyDetails(it)
-        })
+        binding.asteroidRecycler.adapter =
+            AsteroidAdapter(AsteroidAdapter.AsteroidListener { asteroid ->
+                viewModel.onAsteroidClicked(asteroid)
+            })
 
-
-        viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, Observer {
-            if (null != it) {
-                this.findNavController().navigate(MainFragmentDirections.actionShowDetail(it))
-                viewModel.displayPropertyDetailsComplete()
+        viewModel.navigateToAsteroid.observe(viewLifecycleOwner, Observer { asteroid ->
+            asteroid?.let {
+                this.findNavController()
+                    .navigate(MainFragmentDirections.actionShowDetail(asteroid))
+                viewModel.onAsteroidNavigated()
             }
         })
 

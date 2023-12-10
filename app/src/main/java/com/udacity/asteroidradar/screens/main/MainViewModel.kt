@@ -24,10 +24,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val database = getDatabase(application)
     private val asteroidRepository = AsteroidRepository(database)
 
-    private val _navigateToSelectedProperty = MutableLiveData<Asteroid>()
-    val navigateToSelectedProperty: LiveData<Asteroid>
-        get() = _navigateToSelectedProperty
-
     private val _entityAsteroids = MutableLiveData<List<DbAsteroid>>()
 
     private val _imagePproperty = MutableLiveData<PictureOfDay>()
@@ -63,12 +59,16 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun displayPropertyDetails(asteroid: Asteroid) {
-        _navigateToSelectedProperty.value = asteroid
+    //    TODO @SimbaStart:     navigating of Asteroid item in the recyclerView
+    private val _navigateToAsteroid = MutableLiveData<Asteroid?>()
+    val navigateToAsteroid
+        get() = _navigateToAsteroid
+
+    fun onAsteroidClicked(asteroid: Asteroid) {
+        _navigateToAsteroid.value = asteroid
     }
 
-    fun displayPropertyDetailsComplete() {
-        _navigateToSelectedProperty.value = null!!
+    fun onAsteroidNavigated() {
+        _navigateToAsteroid.value = null
     }
-
 }

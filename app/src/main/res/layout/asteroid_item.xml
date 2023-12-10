@@ -12,6 +12,10 @@
             name="viewModel"
             type="com.udacity.asteroidradar.screens.main.MainViewModel" />
 
+        <variable
+            name="clickListener"
+            type="com.udacity.asteroidradar.adapters.AsteroidAdapter.AsteroidListener" />
+
 
     </data>
 
@@ -25,7 +29,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> clickListener.onClick(asteroid)}">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/left_well"
@@ -52,7 +57,7 @@
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
                 android:textStyle="bold"
-                app:astronomicalUnitText="@{asteroid.estimatedDiameter}"
+                app:astronomicalUnitText="@{asteroid.absoluteMagnitude}"
                 app:layout_constraintStart_toStartOf="@+id/left_well"
                 app:layout_constraintTop_toBottomOf="@+id/asteroid_img"
                 tools:text="1.73434au" />
