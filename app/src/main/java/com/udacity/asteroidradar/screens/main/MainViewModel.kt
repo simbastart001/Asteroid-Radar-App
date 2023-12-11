@@ -6,15 +6,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.udacity.asteroidradar.api.Network.asteroids
 import com.udacity.asteroidradar.data.domain.Asteroid
 import com.udacity.asteroidradar.data.domain.PictureOfDay
 import com.udacity.asteroidradar.data.entities.DbAsteroid
 import com.udacity.asteroidradar.data.entities.asDomainModel
 import com.udacity.asteroidradar.data.repository.AsteroidRepository
 import com.udacity.asteroidradar.data.sourceoftruth.getDatabase
-import com.udacity.asteroidradar.network.asDomainModel
-import com.udacity.asteroidradar.utils.Constants.API_KEY
 import kotlinx.coroutines.launch
 
 
@@ -42,6 +39,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val pictureOfDay = asteroidRepository.getImage()
                 _imagePproperty.value = pictureOfDay
+
+                Log.i(TAG, "picture of the day is       ::    $pictureOfDay")
             } catch (e: Exception) {
                 Log.e(TAG, "Error fetching image property: ${e.message}")
             }

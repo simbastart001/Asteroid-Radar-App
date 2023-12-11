@@ -2,12 +2,10 @@ package com.udacity.asteroidradar.api
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.udacity.asteroidradar.data.domain.Asteroid
 import com.udacity.asteroidradar.utils.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import com.google.gson.JsonObject
 import com.udacity.asteroidradar.data.entities.DbAsteroid
 import org.json.JSONObject
 

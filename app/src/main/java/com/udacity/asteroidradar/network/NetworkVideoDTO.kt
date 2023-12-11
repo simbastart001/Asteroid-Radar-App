@@ -5,6 +5,18 @@ import com.udacity.asteroidradar.data.domain.Asteroid
 import com.udacity.asteroidradar.data.entities.DbAsteroid
 
 @JsonClass(generateAdapter = true)
+data class NetworkAsteroids(
+    val id: Long,
+    val codename: String,
+    val closeApproachDate: String,
+    val absoluteMagnitude: Double,
+    val estimatedDiameter: Double,
+    val relativeVelocity: Double,
+    val distanceFromEarth: Double,
+    val isPotentiallyHazardous: Boolean
+)
+
+@JsonClass(generateAdapter = true)
 data class NetworkAsteroidsContainer(val asteroidList: List<NetworkAsteroids>)
 
 //TODO @SimbaStart:      Convert Network results to database objects

@@ -6,8 +6,10 @@ import androidx.lifecycle.map
 import com.udacity.asteroidradar.api.Network
 import com.udacity.asteroidradar.api.Network.asteroids
 import com.udacity.asteroidradar.api.parseAllAsteroidsJsonResult
+import com.udacity.asteroidradar.data.dao.PictureOfDayDao
 import com.udacity.asteroidradar.data.domain.Asteroid
 import com.udacity.asteroidradar.data.domain.PictureOfDay
+import com.udacity.asteroidradar.data.entities.DbPictureOfDay
 import com.udacity.asteroidradar.data.entities.asDomainModel
 import com.udacity.asteroidradar.data.sourceoftruth.AsteroidsDatabase
 import com.udacity.asteroidradar.network.asDatabaseModel
@@ -19,12 +21,41 @@ import org.json.JSONObject
 private const val TAG = "AsteroidDebug"
 
 class AsteroidRepository(private val database: AsteroidsDatabase) {
-
+    var count = 0L
     suspend fun getImage(): PictureOfDay {
         return withContext(Dispatchers.IO) {
-            asteroids.imageOfTheDay(API_KEY)
+            val cachedPictureOfDay = database.pictureOfDayDao.getPictureOfDay(CACHED_TITLE)
+
+            if (cachedPictureOfDay != null) {
+                // If data is available in the local database, return it
+                PictureOfDay(
+                    cachedPictureOfDay.mediaType, cachedPictureOfDay.title, cachedPictureOfDay.url
+                )
+            } else {
+                // Fetch data from the network
+                val pictureOfDay = asteroids.imageOfTheDay(API_KEY)
+                count++
+
+                // Save the fetched data to the local database
+                database.pictureOfDayDao.insert(
+                    DbPictureOfDay(
+                        count, pictureOfDay.mediaType, pictureOfDay.title, pictureOfDay.url
+                    )
+                )
+                pictureOfDay
+            }
         }
     }
+
+    companion object {
+        private const val CACHED_TITLE = "cached_title"
+    }
+
+//    suspend fun getImage(): PictureOfDay {
+//        return withContext(Dispatchers.IO) {
+//            asteroids.imageOfTheDay(API_KEY)
+//        }
+//    }
 
     suspend fun refreshAsteroids() {
         withContext(Dispatchers.IO) {
