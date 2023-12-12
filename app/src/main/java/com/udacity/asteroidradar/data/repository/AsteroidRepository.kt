@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.data.repository
 
 import androidx.lifecycle.LiveData
+import com.udacity.asteroidradar.BuildConfig
 import com.udacity.asteroidradar.api.AsteroidsFilter
 import com.udacity.asteroidradar.api.Network.asteroids
 import com.udacity.asteroidradar.api.parseAllAsteroidsJsonResult
@@ -8,7 +9,6 @@ import com.udacity.asteroidradar.data.domain.PictureOfDay
 import com.udacity.asteroidradar.data.entities.DbAsteroid
 import com.udacity.asteroidradar.data.entities.DbPictureOfDay
 import com.udacity.asteroidradar.data.sourceoftruth.AsteroidsDatabase
-import com.udacity.asteroidradar.utils.Constants.API_KEY
 import com.udacity.asteroidradar.utils.Constants.endDateForWeek
 import com.udacity.asteroidradar.utils.Constants.startDateForWeek
 import com.udacity.asteroidradar.utils.Constants.today
@@ -33,7 +33,7 @@ class AsteroidRepository(private val database: AsteroidsDatabase) {
                 )
             } else {
                 // Fetch data from the network
-                val pictureOfDay = asteroids.imageOfTheDay(API_KEY)
+                val pictureOfDay = asteroids.imageOfTheDay(BuildConfig.API_KEY)
                 count++
 
                 // Save the fetched data to the local database
@@ -89,7 +89,9 @@ class AsteroidRepository(private val database: AsteroidsDatabase) {
         withContext(Dispatchers.IO) {
             try {
                 val response = asteroids.getAsteroids(
-                    startDate = startDateForWeek, endDate = endDateForWeek, apiKey = API_KEY
+                    startDate = startDateForWeek,
+                    endDate = endDateForWeek,
+                    apiKey = BuildConfig.API_KEY
                 )
                 Timber.tag(TAG).i("Response: %s", response)
 

@@ -9,11 +9,7 @@ object Constants {
 
     const val API_QUERY_DATE_FORMAT = "yyyy-MM-dd"
     const val DEFAULT_END_DATE_DAYS = 7
-    const val API_KEY = "NTMElRrWNQYJ7EMbUiKxuvppM9m0hMJHBIwaziI2"
     const val BASE_URL = "https://api.nasa.gov/"
-
-//    val startDateForWeek = "2022-08-17"
-//    val endDateForWeek = "2022-08-23"
 
     val startDateForWeek = calculateStartDateForWeek()
     val endDateForWeek = calculateEndDateForWeek()

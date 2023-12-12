@@ -6,20 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.udacity.asteroidradar.api.AsteroidsFilter
-import com.udacity.asteroidradar.api.Network.asteroids
 import com.udacity.asteroidradar.data.domain.Asteroid
 import com.udacity.asteroidradar.data.domain.PictureOfDay
 import com.udacity.asteroidradar.data.entities.DbAsteroid
 import com.udacity.asteroidradar.data.entities.asDomainModel
 import com.udacity.asteroidradar.data.repository.AsteroidRepository
 import com.udacity.asteroidradar.data.sourceoftruth.getDatabase
-import com.udacity.asteroidradar.utils.Constants.API_KEY
-import com.udacity.asteroidradar.utils.Constants.endDateForWeek
-import com.udacity.asteroidradar.utils.Constants.startDateForWeek
-import com.udacity.asteroidradar.utils.Constants.today
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 private const val TAG = "TheAsteroidBug"
