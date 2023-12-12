@@ -21,14 +21,10 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<Asteroid>?) {
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        Glide.with(imgView.context)
-            .load(imgUri)
-            .apply(
-                RequestOptions()
-                    .placeholder(R.drawable.placeholder_picture_of_day)
-                    .error(R.drawable.ic_broken_image)
-            )
-            .into(imgView)
+        Glide.with(imgView.context).load(imgUri).apply(
+            RequestOptions().placeholder(R.drawable.placeholder_picture_of_day)
+                .error(R.drawable.ic_broken_image)
+        ).into(imgView)
     }
 }
 
@@ -36,8 +32,11 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {
         imageView.setImageResource(R.drawable.ic_status_potentially_hazardous)
+        imageView.contentDescription =
+            imageView.context.getString(R.string.potentially_hazardous_asteroid_image)
     } else {
         imageView.setImageResource(R.drawable.ic_status_normal)
+        imageView.contentDescription = imageView.context.getString(R.string.ic_status_safe)
     }
 }
 
@@ -45,8 +44,11 @@ fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
 fun bindDetailsStatusImage(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {
         imageView.setImageResource(R.drawable.asteroid_hazardous)
+        imageView.contentDescription =
+            imageView.context.getString(R.string.potentially_hazardous_asteroid_image)
     } else {
         imageView.setImageResource(R.drawable.asteroid_safe)
+        imageView.contentDescription = imageView.context.getString(R.string.ic_status_safe)
     }
 }
 

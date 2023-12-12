@@ -23,4 +23,6 @@
     <string name="asteroid_image_of_the_day">asteroid image of the day</string>
     <string name="asteroid_status_img">Asteroid Status</string>
     <string name="buttonHelp">An astronomical unit (AU) is the mean distance between the center of the Earth and the center of the sun</string>
+    <string name="ic_status_potentially_hazardous">This Asteroid is potentially hazardous. Be alert!</string>
+    <string name="ic_status_safe">This Asteroid is safe. Relax.</string>
 </resources>

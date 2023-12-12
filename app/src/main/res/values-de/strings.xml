@@ -22,4 +22,8 @@
     <string name="asteroid_picture">Asteroidenbild</string>
     <string name="asteroid_image_of_the_day">Asteroidenbild des Tages</string>
     <string name="asteroid_status_img">Asteroidenstatus</string>
+    <string name="buttonHelp">Eine astronomische Einheit (AE) ist der mittlere Abstand zwischen dem Zentrum der Erde und dem Zentrum der Sonne</string>
+    <string name="ic_status_potentially_hazardous">Dieser Asteroid ist potenziell gefährlich. Sei aufmerksam!</string>
+    <string name="ic_status_safe">Dieser Asteroid ist sicher. Entspann dich.</string>
+
 </resources>
