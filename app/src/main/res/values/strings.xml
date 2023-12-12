@@ -22,4 +22,5 @@
     <string name="asteroid_picture">asteroid picture</string>
     <string name="asteroid_image_of_the_day">asteroid image of the day</string>
     <string name="asteroid_status_img">Asteroid Status</string>
+    <string name="buttonHelp">An astronomical unit (AU) is the mean distance between the center of the Earth and the center of the sun</string>
 </resources>

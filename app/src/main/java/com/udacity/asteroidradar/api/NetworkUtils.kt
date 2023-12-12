@@ -7,7 +7,10 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import com.udacity.asteroidradar.data.entities.DbAsteroid
+import com.udacity.asteroidradar.utils.Constants.startDateForWeek
+import com.udacity.asteroidradar.utils.Constants.startDay
 import org.json.JSONObject
+import timber.log.Timber
 
 private const val TAG = "AsteroidDebug"
 
@@ -24,7 +27,7 @@ fun parseAllAsteroidsJsonResult(jsonResult: JSONObject): List<DbAsteroid> {
             for (i in 0 until dateAsteroidJsonArray.length()) {
                 val asteroidJson = dateAsteroidJsonArray.getJSONObject(i)
 
-                Log.i(TAG, "Parsing asteroid for date $date: $asteroidJson")
+                Timber.tag(TAG).i("Parsing asteroid for date " + date + ": " + asteroidJson)
 
                 val id = asteroidJson.getLong("id")
                 val codename = asteroidJson.getString("name")
@@ -65,7 +68,7 @@ private fun getNextSevenDaysFormattedDates(): ArrayList<String> {
     val formattedDateList = ArrayList<String>()
 
     val calendar = Calendar.getInstance()
-    calendar.time = Date(2022 - 1900, 8 - 1, 17)
+    calendar.time = Date(2023 - 1900, Calendar.DECEMBER, startDay)
 
     for (i in 0..Constants.DEFAULT_END_DATE_DAYS) {
         val currentTime = calendar.time
@@ -73,8 +76,7 @@ private fun getNextSevenDaysFormattedDates(): ArrayList<String> {
         formattedDateList.add(dateFormat.format(currentTime))
         calendar.add(Calendar.DAY_OF_YEAR, 1)
 
-        Log.i(TAG, "Generated dates: $formattedDateList")
-
+        Timber.tag(TAG).i("Generated dates: %s", formattedDateList)
     }
 
     return formattedDateList
