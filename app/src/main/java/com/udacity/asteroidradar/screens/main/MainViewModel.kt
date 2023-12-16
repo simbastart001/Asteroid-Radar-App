@@ -24,6 +24,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _imagePproperty = MutableLiveData<PictureOfDay>()
     val imagePproperty: MutableLiveData<PictureOfDay>
         get() = _imagePproperty
+
     private val _properties = MutableLiveData<List<Asteroid>>()
     val properties: LiveData<List<Asteroid>>
         get() = _properties
